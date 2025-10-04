@@ -1,0 +1,22 @@
+##################
+### Dataloader ###
+##################
+
+defaults:
+  - _self_
+  - esm: esm
+
+# torch dataloader settings
+pin_memory: True
+num_workers: 1  
+prefetch_factor: 3  
+
+# number of source-field pairs per epoch
+train:
+  samples_per_epoch: 256 
+
+valid:
+  samples_per_epoch: 16
+
+test:
+  samples_per_epoch: 16

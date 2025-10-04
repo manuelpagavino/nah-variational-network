@@ -1,0 +1,17 @@
+
+############################
+### Total Variation (TV) ###
+############################
+
+T: 20000
+snr_lambdaa: -1
+rho: 1.0 
+mu: 0.0 
+eval_every: 1e3
+
+optimized:
+  snr_lambdaa:
+    plate: 47.5
+    piston: 35
+    quadrupole: 35
+    lsp: 35

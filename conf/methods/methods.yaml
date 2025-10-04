@@ -1,0 +1,12 @@
+###############
+### Methods ###
+###############
+
+defaults:
+  - _self_
+  - ln: ln # Least Norm (LN)
+  - cs: cs # Compressive Sensing (CS)
+  - tv: tv # Total Variation (TV)
+  - tgv: tgv # Total Generalized Variation (TGV)
+  - pnn: pnn # Point Neuron Network (PNN)
+  - vn: vn # Variational Network (VN)

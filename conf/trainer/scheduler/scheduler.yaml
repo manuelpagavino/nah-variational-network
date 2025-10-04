@@ -1,0 +1,10 @@
+####################
+### LR Scheduler ###
+####################
+
+use_scheduler: True 
+
+klass: ReduceLROnPlateau
+mode: min
+factor: 0.75
+patience: 35

@@ -1,0 +1,19 @@
+############
+### Loss ###
+############
+
+# loss type
+klass: L1Loss
+kwargs: {"reduction": "mean"}
+
+# weighting factors
+loss_abs_weight: 1.
+loss_real_weight: 1.
+loss_imag_weight: 1.
+loss_ncc_weight: 0.3
+
+###############
+### Logging ###
+###############
+
+show_loss: False # print sublosses to ease selection of weighting factors

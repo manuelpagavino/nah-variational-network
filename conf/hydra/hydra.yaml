@@ -1,0 +1,27 @@
+#############
+### Hydra ###
+#############
+
+# NOTE: seachpaths must be set in primary config
+
+run:
+  dir: ./results/${name}  # group experiments by name
+
+job_logging:
+  handlers:
+    file:
+      class: logging.FileHandler
+      mode: a
+      formatter: colorlog
+      filename: trainer.log
+    console:
+      class: logging.StreamHandler
+      formatter: colorlog
+      stream: ext://sys.stderr
+
+hydra_logging:
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: colorlog
+      stream: ext://sys.stderr

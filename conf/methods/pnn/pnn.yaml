@@ -1,0 +1,45 @@
+##################################
+### Point Neuron Network (PNN) ###
+##################################
+
+T: 200000
+snr_lambdaa: -1
+step_q: -1 
+step_x: -1
+step_y: -1
+step_z: 0 # do not update z coordinate
+psi: -1
+init_ln: True
+eval_every: 1e3
+stop_early: True
+stop_tol: 3
+
+optimized:
+  snr_lambdaa:
+    plate: 30 
+    piston: 30
+    quadrupole: 30
+    lsp: 30
+  step_q:
+    plate: 0.1
+    piston: 0.5
+    quadrupole: 4.6e-5
+    lsp: 2.5
+  step_x:
+    plate: 1e-5
+    piston: 1e-7
+    quadrupole: 0
+    lsp: 8e-8
+  step_y:
+    plate: 1e-5
+    piston: 1e-7
+    quadrupole: 0
+    lsp: 8e-8
+  psi:
+    plate: 1e-5
+    piston: 3e-4
+    quadrupole: 1.5
+    lsp: 1.5e-3
+
+
+

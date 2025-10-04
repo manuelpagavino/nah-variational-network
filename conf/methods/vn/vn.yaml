@@ -1,0 +1,20 @@
+################################
+### Variational Network (VN) ###
+################################
+
+defaults:
+  - initializer: initializer
+  - regularizer: regularizer
+  - mismatch: mismatch
+  - momentum: momentum
+  - _self_
+
+T: 10
+snr_lambdaa: -1
+
+optimized:
+  snr_lambdaa:
+    plate: 37.5
+    piston: 32.5
+    quadrupole: 45
+    lsp: 30

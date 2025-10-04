@@ -1,0 +1,56 @@
+###############
+### Trainer ###
+###############
+
+defaults:
+  - _self_
+  - optimizer: optimizer
+  - scheduler: scheduler
+  - loss: loss
+
+############
+### Misc ###
+############
+
+epochs: 3000 
+batch_size: 8
+valid_every: 1 # validate every so epochs
+eval_every: 30 # test every so epochs
+
+##############
+### Device ###
+##############
+
+# NOTE: "cuda:0" is accessed by accelerator=gpu, devices=[0], multiprocessing with 2 GPUs is achieved by accelerator=gpu, devices=2, etc.
+accelerator: cpu # "cpu", "gpu", "tpu", "ipu", "auto"
+strategy: auto # None (Single gpu, 1 machine), "dp" (multiple-gpus, 1 machine); 'ddp', 'ddp_spawn', 'ddp_spawn' (multiple-gpus across many machines); 'bagua' (multiple-gpus across many machines with advanced training algorithms)
+devices: 1 # Either an int defining the total number of devices used, or a list containing the indizes of the used devices
+precision: 32-true # use `bf16` for bfloat16 during training (not yet possible for complex-valued ops)
+
+##################
+### Checkpoint ###
+##################
+
+# Checkpointing, by default automatically load last checkpoint and checkpoint each epoch
+checkpoint: true
+checkpoint_every: # Keep None for regular behavior = overwrite last ckpt each epoch, else keep backup ckpts
+continue_from: '' # Path the a checkpoint.th file to start from.
+continue_best: false  # continue from best, not last state if continue_from is set.
+checkpoint_file: checkpoint.th
+best_file: best.th  # will contain only best model at any point
+history_file: history.json
+keep_history:  True
+
+###############
+### Logging ###
+###############
+
+verbose: 0 # activate DEBUG logging
+
+###################
+### Directories ###
+###################
+
+log_dir: logs 
+tensorboard_dir: tensorboard 
+checkpoint_dir: checkpoints

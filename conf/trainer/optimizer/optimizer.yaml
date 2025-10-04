@@ -1,0 +1,26 @@
+#################
+### Optimizer ###
+#################
+
+klass: NAdam
+lr: 1e-3
+b1: 0.9
+b2: 0.999
+
+########################
+### Gradient Clipper ###
+########################
+
+clip: False # activate gradient clipping
+clip_norm: 0.1 # clip gradient global norm by clip_norm
+
+autoclip: True # use automatic gradient clipping
+clip_quantile: 0.9 
+clip_history_length: 1000
+
+###############
+### Logging ###
+###############
+
+show_grad_norm: False # print global norm of gradient vector in each step to ease selection of clip_norm
+

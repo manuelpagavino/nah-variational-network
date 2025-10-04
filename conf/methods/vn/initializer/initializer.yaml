@@ -1,0 +1,65 @@
+##############################################
+### Data-driven Continued TSVD Initializer ###
+##############################################
+
+# Activation Functions
+
+activation_u1:
+  num_weights: 64
+  num_filters: ${..filter_u1.out_channels}
+  vmin: -1
+  vmax: 1
+  init_type: random
+  init_scale: 0.1
+
+activation_u2:
+  num_weights: 64
+  num_filters: ${..filter_u2.out_channels}
+  vmin: -1
+  vmax: 1
+  init_type: random
+  init_scale: 0.1
+
+activation_u3:
+  num_weights: 64
+  num_filters: ${..filter_u3.out_channels}
+  vmin: -1
+  vmax: 1
+  init_type: random
+  init_scale: 0.1
+
+# Filter Kernels 
+
+filter_u1:
+  in_channels: 1
+  out_channels: 32
+  kernel_size: 5
+  pad: 3
+  pad_mode: constant
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True
+
+filter_u2:
+  in_channels: ${..filter_u1.out_channels}
+  out_channels: ${..filter_u1.out_channels}
+  kernel_size: 5
+  pad: 3
+  pad_mode: ${..filter_u1.pad_mode}
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True
+
+filter_u3:
+  in_channels: ${..filter_u1.out_channels}
+  out_channels: 1
+  kernel_size: 5
+  pad: 3
+  pad_mode: ${..filter_u1.pad_mode}
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True
+

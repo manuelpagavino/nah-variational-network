@@ -1,0 +1,16 @@
+#########################################
+### Total Generalized Variation (TGV) ###
+#########################################
+
+T: 20000
+snr_lambdaa: -1
+rho: 1.0 
+mu: 0.0 
+eval_every: 1e3
+
+optimized:
+  snr_lambdaa:
+    plate: 35
+    piston: 40
+    quadrupole: 30
+    lsp: 35

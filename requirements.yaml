@@ -1,0 +1,37 @@
+# Requirements for nah-variational-network
+#
+# Install new environment:
+# `conda remove --name nah-variational-network --all -y` to optionally remove existing env
+# `conda env create -f requirements.yaml` to install new env
+#
+# In case of install problems:
+# `conda config --set channel_priority flexible` to resolve package conflicts
+# `conda clean --all` to clear old caches
+
+name: nah-variational-network
+
+channels:
+  - pytorch
+  - conda-forge
+  - nvidia
+  - defaults
+
+dependencies:
+  - python
+  - scipy
+  - pytorch
+  # - pytorch-cuda
+  - lightning
+  - tensorboard
+  - torchmetrics
+  - pandas
+  - tqdm
+  - matplotlib
+  - scikit-learn
+
+  - pip
+  - pip:
+    - hydra-core
+    - hydra_colorlog
+    - autoclip 
+    - cplxmodule

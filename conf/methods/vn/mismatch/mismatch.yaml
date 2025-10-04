@@ -1,0 +1,37 @@
+########################
+### Mismatch Network ###
+########################
+
+# Activation Function
+
+activation:
+  num_weights: 64
+  num_filters: ${..filter_B.out_channels}
+  vmin: -1
+  vmax: 1
+  init_type: random
+  init_scale: 0.05
+
+# Filter Kernels / Central Pre-Conditioners
+
+filter_B:
+  in_channels: 1
+  out_channels: 8
+  kernel_size: 5
+  pad: 3
+  pad_mode: constant
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True
+
+filter_A:
+  in_channels: ${..filter_B.out_channels}
+  out_channels: ${..filter_B.out_channels}
+  kernel_size: 3
+  pad: 1
+  pad_mode: ${..filter_B.pad_mode}
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True

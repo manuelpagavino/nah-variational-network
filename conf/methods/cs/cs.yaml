@@ -1,0 +1,14 @@
+################################
+### Compressive Sensing (CS) ###
+################################
+
+T: 20000
+snr_lambdaa: -1
+eval_every: 1e3
+
+optimized:
+  snr_lambdaa:
+    plate: 40
+    piston: 35
+    quadrupole: 35
+    lsp: 35

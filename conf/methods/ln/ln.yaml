@@ -1,0 +1,16 @@
+#######################
+### Least Norm (LN) ###
+#######################
+
+T: 20000
+method: tikhonov
+snr_lambdaa: -1
+rho: 1.0
+eval_every: 1e3
+
+optimized:
+  snr_lambdaa:
+    plate: 45
+    piston: 37.5
+    quadrupole: 35
+    lsp: 30

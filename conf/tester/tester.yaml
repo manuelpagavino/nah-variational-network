@@ -1,0 +1,15 @@
+##############
+### Tester ###
+##############
+
+src: plate # sound source type - Options: plate, piston, quadrupole, lsp
+method: ln # reconstruction method - Options: ln, cs, tv, tgv, pnn, vn
+snr: 28 # signal-to-noise ratio (SNR) of simulated measurements in dB
+freq: 800 # sound frequency in Hz - Options: float or list [start, stop, step] defining a range of frequencies over which to iterate
+dist: 0.06 # measurement distance in m
+dist_rec: 0.03 # reconstruction distance in m
+ensemble: 1 # number of sample realizations
+seed: 1234 # fixed random seed
+
+# abspath to some vn checkpoint
+checkpoint_path: 

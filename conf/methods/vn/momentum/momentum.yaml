@@ -1,0 +1,19 @@
+########################
+### Momentum Network ###
+########################
+
+store_all_grads: True # If True, store gradients from all previous iterations/layers. Othwerise, use only gradients from preceding iteration/layer.
+
+# Filter Kernels
+
+filter:
+  in_channels: 1
+  out_channels: 41 # 32 regularizers 8 mismatch 1 Dq
+  kernel_size: 1 # 1x1 conv
+  pad: 0
+  pad_mode: zeros
+  zero_mean: True
+  norm: False 
+  norm_max: 1.0
+  kaiming_uniform: True
+

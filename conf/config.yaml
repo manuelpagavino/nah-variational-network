@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+  - trainer: trainer
+  - dataloader: dataloader
+  - tester: tester
+  - methods: methods
+  - hydra: hydra
+
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+
+# name of current experiment
+name: foobar
