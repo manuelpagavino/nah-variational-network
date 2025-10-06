@@ -71,7 +71,7 @@ class Mismatch(nn.Module):
         q = F.pad(q, [self.pad_B] * 4, self.pad_mode_B)
         q = conv2d(
             input=q,
-            weight=self.filter_B, 
+            weight=self.filter_B.to(q.device), 
             bias=None,
             padding=self.args.filter_B.kernel_size // 2,
             padding_mode="zeros"
@@ -90,7 +90,7 @@ class Mismatch(nn.Module):
         Gq_p = F.pad(Gq_p, [self.pad_A] * 4, self.pad_mode_A)
         Gq_p = conv2d(
             input=Gq_p,
-            weight=self.filter_A,
+            weight=self.filter_A.to(q.device),
             bias=None,
             padding=self.args.filter_A.kernel_size // 2,
             padding_mode="zeros",
@@ -106,7 +106,7 @@ class Mismatch(nn.Module):
         # left preconditioning transposed
         Gq_p = conv2d(
             input=Gq_p,
-            weight=torch.flip(self.filter_A, dims=(2,3)).conj(),
+            weight=torch.flip(self.filter_A, dims=(2,3)).conj().to(q.device),
             bias=None,
             padding=self.args.filter_A.kernel_size // 2, 
             padding_mode="zeros",
@@ -122,7 +122,7 @@ class Mismatch(nn.Module):
         Gh_Gq_p = F.pad(Gh_Gq_p, [self.pad_B] * 4, self.pad_mode_B)
         Dq = conv2d(
             input=Gh_Gq_p,
-            weight=torch.flip(self.filter_B, dims=(2,3)).conj(),
+            weight=torch.flip(self.filter_B, dims=(2,3)).conj().to(q.device),
             bias=None,
             padding=self.args.filter_B.kernel_size // 2,
             padding_mode="zeros",

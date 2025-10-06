@@ -58,7 +58,7 @@ class Momentum(nn.Module):
             grad_cache_weighted = torch.cat(grad_cache, 1)
             grad_cache_weighted = conv2d(
                 input=grad_cache_weighted,
-                weight=self.filter,
+                weight=self.filter.to(Rq.device),
                 bias=None,
                 padding=self.pad,
                 padding_mode=self.pad_mode,

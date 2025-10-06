@@ -49,7 +49,7 @@ class Regularizer(nn.Module):
         q = F.pad(q, [self.pad] * 4, self.pad_mode)
         q = conv2d(
             input=q,
-            weight=self.filter_L,
+            weight=self.filter_L.to(q.device),
             bias=None,
             padding=self.args.filter_L.kernel_size // 2,
             padding_mode="zeros",
@@ -57,7 +57,7 @@ class Regularizer(nn.Module):
         
         q = conv2d(
             input=q,
-            weight=self.filter_K, 
+            weight=self.filter_K.to(q.device), 
             bias=None,
             padding=self.args.filter_K.kernel_size // 2,
             padding_mode="zeros",
@@ -73,7 +73,7 @@ class Regularizer(nn.Module):
         # transposed filters / domain transformations
         q = conv2d(
             input=q,
-            weight=torch.flip(self.filter_K, dims=(2,3)).conj(), 
+            weight=torch.flip(self.filter_K, dims=(2,3)).conj().to(q.device), 
             bias=None,
             padding=self.args.filter_K.kernel_size // 2,
             padding_mode="zeros",
@@ -81,7 +81,7 @@ class Regularizer(nn.Module):
 
         Rq = conv2d(
             input=q,
-            weight=torch.flip(self.filter_L, dims=(2,3)).conj(),
+            weight=torch.flip(self.filter_L, dims=(2,3)).conj().to(q.device),
             bias=None,
             padding=self.args.filter_L.kernel_size // 2, 
             padding_mode="zeros",

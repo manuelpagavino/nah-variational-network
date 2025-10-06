@@ -38,7 +38,7 @@ class Initializer(nn.Module):
         # filter
         x = conv2d(
             input=x,
-            weight=kernel,
+            weight=kernel.to(x.device),
             bias=None,
             padding="same",
             padding_mode="zeros",
