@@ -5,7 +5,7 @@ import json
 import hydra 
 import logging
 
-import pytorch_lightning as pl
+import lightning as L
 
 from torch.utils.data import DataLoader
 from pathlib import Path
@@ -22,7 +22,7 @@ from utils.misc import (
     )
 
 logger = logging.getLogger(__name__)
-class Solver(pl.LightningModule):
+class Solver(L.LightningModule):
     """The training engine."""
 
     def __init__(self, args):
@@ -160,7 +160,8 @@ class Solver(pl.LightningModule):
             kappa = kappa0 * (self.global_step + 1)
             for t, q_t in enumerate(q_t_all):
                 loss_weight = math.exp(-kappa * (self.args.methods.vn.T - t))
-                loss += self.loss_fn(estimate=q_t, target=q) * loss_weight
+                if loss_weight >= 1e-8:
+                    loss += self.loss_fn(estimate=q_t, target=q) * loss_weight
 
         # log loss in tensorboard
         self.log(

@@ -85,7 +85,7 @@ class VariationalNetwork(nn.Module):
         if return_intermediate:
             # list of intermediate outputs starting from the initializer layer
             assert len(q_t) == self.args.T + 1 
-            return q_t[::-1]
+            return q_t
         else:
             return q
     

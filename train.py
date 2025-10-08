@@ -2,7 +2,7 @@ import os
 import logging
 import hydra
 
-import pytorch_lightning as pl
+import lightning as L
 
 from pathlib import Path
 from os.path import join
@@ -41,7 +41,7 @@ def run(args):
     # add checkpoint callbacks
     callbacks += [
         # save checkpoint every n epochs as last.pt
-        pl.callbacks.ModelCheckpoint(
+        L.pytorch.callbacks.ModelCheckpoint(
             monitor="train_loss",
             dirpath=ckpt_dir_path,
             filename="last",
@@ -50,7 +50,7 @@ def run(args):
             every_n_epochs=args.trainer.checkpoint_every,
         ),
         # save best validation checkpoint as best.pt
-        pl.callbacks.ModelCheckpoint(
+        L.pytorch.callbacks.ModelCheckpoint(
             monitor="valid_loss",
             dirpath=ckpt_dir_path,
             filename="best",
@@ -60,20 +60,20 @@ def run(args):
 
     # add callback to log learning rate every epoch
     callbacks += [
-        pl.callbacks.LearningRateMonitor(
+        L.pytorch.callbacks.LearningRateMonitor(
         logging_interval='epoch'
         )
     ]
 
     # setup tensorboard logger
-    tb_logger = pl.loggers.TensorBoardLogger(
+    tb_logger = L.pytorch.loggers.TensorBoardLogger(
         save_dir='.',
         name="",
         version=join(args.trainer.log_dir, args.trainer.tensorboard_dir),
     )
 
     # setup trainer
-    trainer = pl.Trainer(
+    trainer = L.pytorch.Trainer(
         default_root_dir=os.path.join(os.getcwd(), ckpt_dir_path),
         accelerator=args.trainer.accelerator,
         strategy=args.trainer.strategy,
