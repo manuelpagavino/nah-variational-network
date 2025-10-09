@@ -41,7 +41,9 @@ class CplxGaussianRBF(nn.Module):
 
         # RBF weights and biases
         self.weights = torch.nn.Parameter(create_activation_params(args), requires_grad=True)
-        self.bias = torch.nn.Parameter(torch.zeros((1, args.num_filters, 1), dtype=torch.complex64))
+        self.bias = torch.nn.Parameter(
+            torch.zeros((1, args.num_filters, 1), dtype=torch.complex64), requires_grad=True
+            )
 
     def sunflower(self, n, alpha):
         """Sunflower seed arangement.

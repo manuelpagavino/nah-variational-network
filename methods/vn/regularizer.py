@@ -23,8 +23,8 @@ class Regularizer(nn.Module):
         self.pad_mode = args.filter_K.pad_mode
 
         # filters
-        self.filter_K = create_filter(args.filter_K)
-        self.filter_L = create_filter(args.filter_L)
+        self.filter_K = torch.nn.Parameter(create_filter(args.filter_K), requires_grad=True)
+        self.filter_L = torch.nn.Parameter(create_filter(args.filter_L), requires_grad=True)
 
         # activation
         self.activation = CplxGaussianRBF(args.activation)

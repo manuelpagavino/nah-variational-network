@@ -17,9 +17,9 @@ class Initializer(nn.Module):
         self.args = args
 
         # filters
-        self.filter_u1 = create_filter(args.filter_u1)
-        self.filter_u2 = create_filter(args.filter_u2)
-        self.filter_u3 = create_filter(args.filter_u3)
+        self.filter_u1 = torch.nn.Parameter(create_filter(args.filter_u1), requires_grad=True)
+        self.filter_u2 = torch.nn.Parameter(create_filter(args.filter_u2), requires_grad=True)
+        self.filter_u3 = torch.nn.Parameter(create_filter(args.filter_u3), requires_grad=True)
         self.filters = [self.filter_u1, self.filter_u2, self.filter_u3]
 
         # activations

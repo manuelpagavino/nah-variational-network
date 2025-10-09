@@ -21,10 +21,11 @@ class Momentum(nn.Module):
         self.pad_mode = args.filter.pad_mode
 
         # filters
-        self.filter = create_filter(
-            args.filter, 
-            multiplier=self.layer if self.store_all_grads else 1
+        self.filter = torch.nn.Parameter(
+            create_filter(args.filter, multiplier=self.layer if self.store_all_grads else 1), 
+            requires_grad=True
             )
+        
 
     def forward(self, Rq, Dq, grad_cache):
         """Apply gradient momentum network to re-weigh and sum up past and current gradients according to Eq. (21).

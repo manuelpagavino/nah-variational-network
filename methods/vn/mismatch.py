@@ -25,8 +25,8 @@ class Mismatch(nn.Module):
         self.pad_mode_B = args.filter_A.pad_mode
 
         # filters
-        self.filter_A = create_filter(args.filter_A)
-        self.filter_B = create_filter(args.filter_B)
+        self.filter_A = torch.nn.Parameter(create_filter(args.filter_A), requires_grad=True)
+        self.filter_B = torch.nn.Parameter(create_filter(args.filter_B), requires_grad=True)
 
         # activations
         self.activation = CplxGaussianRBF(args.activation)
